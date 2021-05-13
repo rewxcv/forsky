@@ -1,0 +1,289 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+  <meta name="generator" content="Hugo 0.82.0">
+  <title>Pricing example · Bootstrap v5.0</title>
+
+  <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/pricing/">
+
+
+
+  <!-- Bootstrap core CSS -->
+  <link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <style>
+    .bd-placeholder-img {
+      font-size: 1.125rem;
+      text-anchor: middle;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      user-select: none;
+    }
+
+    @media (min-width: 768px) {
+      .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+      }
+    }
+  </style>
+
+
+  <!-- Custom styles for this template -->
+  <link href="pricing.css" rel="stylesheet">
+</head>
+
+<body onclick="next()">
+
+  <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+    <symbol id="check" viewBox="0 0 16 16">
+      <title>Check</title>
+      <path
+        d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z" />
+    </symbol>
+  </svg>
+
+  <div class="container py-3">
+    <header class="d-flex flex-column flex-md-row align-items-center pb-3 mb-4 border-bottom">
+      <a href="/" class="d-flex align-items-center text-dark text-decoration-none">
+        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="32" class="me-2" viewBox="0 0 118 94" role="img">
+          <title>Bootstrap</title>
+          <path fill-rule="evenodd" clip-rule="evenodd"
+            d="M24.509 0c-6.733 0-11.715 5.893-11.492 12.284.214 6.14-.064 14.092-2.066 20.577C8.943 39.365 5.547 43.485 0 44.014v5.972c5.547.529 8.943 4.649 10.951 11.153 2.002 6.485 2.28 14.437 2.066 20.577C12.794 88.106 17.776 94 24.51 94H93.5c6.733 0 11.714-5.893 11.491-12.284-.214-6.14.064-14.092 2.066-20.577 2.009-6.504 5.396-10.624 10.943-11.153v-5.972c-5.547-.529-8.934-4.649-10.943-11.153-2.002-6.484-2.28-14.437-2.066-20.577C105.214 5.894 100.233 0 93.5 0H24.508zM80 57.863C80 66.663 73.436 72 62.543 72H44a2 2 0 01-2-2V24a2 2 0 012-2h18.437c9.083 0 15.044 4.92 15.044 12.474 0 5.302-4.01 10.049-9.119 10.88v.277C75.317 46.394 80 51.21 80 57.863zM60.521 28.34H49.948v14.934h8.905c6.884 0 10.68-2.772 10.68-7.727 0-4.643-3.264-7.207-9.012-7.207zM49.948 49.2v16.458H60.91c7.167 0 10.964-2.876 10.964-8.281 0-5.406-3.903-8.178-11.425-8.178H49.948z"
+            fill="currentColor"></path>
+        </svg>
+        <span class="fs-4" id=''>Hi, Sky. Let's do it</span>
+      </a>
+
+      <nav class="d-inline-flex mt-2 mt-md-0 ms-md-auto">
+        <a class="me-3 py-2 text-dark text-decoration-none" href="#"></a>
+        <a class="me-3 py-2 text-dark text-decoration-none" href="#"></a>
+        <a class="me-3 py-2 text-dark text-decoration-none" href="#"></a>
+        <a class="py-2 text-dark text-decoration-none" href="#"></a>
+      </nav>
+    </header>
+    <div class="pricing-header p-3 pb-md-4 mx-auto text-center d-flex">
+      <h1 class="fw-normal" id='pinyin'>??? ???</h1>
+    </div>
+    
+    <div class="pricing-header p-3 pb-md-4 mx-auto text-center d-flex">
+        <h1 class="fw-normal" id='char'></h1>
+    </div>
+
+    <main>
+    </main>
+
+  </div>
+  <script>
+      var pinyins = [{pingyin:"hé biān     ",char:"河边"},
+{pingyin:"tiān ya     ",char:"天呀"},
+{pingyin:"fàng guò    ",char:"放过"},
+{pingyin:"huā duǒ     ",char:"花朵"},
+{pingyin:"měi sè      ",char:"美色"},
+{pingyin:"wài fàng    ",char:"外放"},
+{pingyin:"jiā zhī     ",char:"加之"},
+{pingyin:"biān shēng  ",char:"边声"},
+{pingyin:"jī chuáng   ",char:"机床"},
+{pingyin:"zháo biān   ",char:"着边"},
+{pingyin:"fàng shēng  ",char:"放声"},
+{pingyin:"fàng xià    ",char:"放下"},
+{pingyin:"yáng tái    ",char:"阳台"},
+{pingyin:"jī dòng     ",char:"机动"},
+{pingyin:"yòu bian    ",char:"右边"},
+{pingyin:"huǒ jī      ",char:"火机"},
+{pingyin:"fàng fēi    ",char:"放飞"},
+{pingyin:"yuè liang   ",char:"月亮"},
+{pingyin:"Běi měi     ",char:"北美"},
+{pingyin:"biān yīn    ",char:"边音"},
+{pingyin:"dì tái      ",char:"地台"},
+{pingyin:"tái fēng    ",char:"台风"},
+{pingyin:"Rì Měi      ",char:"日美"},
+{pingyin:"huā ní      ",char:"花呢"},
+{pingyin:"tái qián    ",char:"台前"},
+{pingyin:"tái fēng    ",char:"台风"},
+{pingyin:"xià bian    ",char:"下边"},
+{pingyin:"liàng guāng ",char:"亮光"},
+{pingyin:"qīng yú     ",char:"青鱼"},
+{pingyin:"jiāng biān  ",char:"江边"},
+{pingyin:"fàng shuǐ   ",char:"放水"},
+{pingyin:"Mǎ biān     ",char:"马边"},
+{pingyin:"liàng xiàng ",char:"亮相"},
+{pingyin:"fàng qíng   ",char:"放晴"},
+{pingyin:"biān dì     ",char:"边地"},
+{pingyin:"Měi lè      ",char:"美乐"},
+{pingyin:"nà bian     ",char:"那边"},
+{pingyin:"Gāo tái     ",char:"高台"},
+{pingyin:"Měi jīn     ",char:"美金"},
+{pingyin:"zhēn liàng  ",char:"真亮"},
+{pingyin:"yú xiāng    ",char:"鱼香"},
+{pingyin:"dì tái      ",char:"地台"},
+{pingyin:"kàn tái     ",char:"看台"},
+{pingyin:"fēng jī     ",char:"风机"},
+{pingyin:"Fēi yú      ",char:"飞鱼"},
+{pingyin:"jiā yǐ      ",char:"加以"},
+{pingyin:"ní ní       ",char:"呢呢"},
+{pingyin:"huā biān    ",char:"花边"},
+{pingyin:"biān dì     ",char:"边地"},
+{pingyin:"zhí jiǎo    ",char:"直角"},
+{pingyin:"fàng xíng   ",char:"放行"},
+{pingyin:"jiā fēn     ",char:"加分"},
+{pingyin:"tiān jī     ",char:"天机"},
+{pingyin:"Tián Liàng  ",char:"田亮"},
+{pingyin:"shǒu biān   ",char:"手边"},
+{pingyin:"fàng fēng   ",char:"放风"},
+{pingyin:"tiān biān   ",char:"天边"},
+{pingyin:"shuāng biān ",char:"双边"},
+{pingyin:"ěr jī       ",char:"耳机"},
+{pingyin:"biān yuǎn   ",char:"边远"},
+{pingyin:"měi shēng   ",char:"美声"},
+{pingyin:"zhí dào     ",char:"直到"},
+{pingyin:"fàng qì     ",char:"放气"},
+{pingyin:"yáng tái    ",char:"阳台"},
+{pingyin:"ní zi       ",char:"呢子"},
+{pingyin:"fēng jī     ",char:"风机"},
+{pingyin:"yú chí      ",char:"鱼池"},
+{pingyin:"yú huā      ",char:"鱼花"},
+{pingyin:"Měi fēn     ",char:"美分"},
+{pingyin:"guāng liàng ",char:"光亮"},
+{pingyin:"zhǐ yú      ",char:"纸鱼"},
+{pingyin:"ài měi      ",char:"爱美"},
+{pingyin:"jī tǐ       ",char:"机体"},
+{pingyin:"shàng tái   ",char:"上台"},
+{pingyin:"Měi lè      ",char:"美乐"},
+{pingyin:"Guó měi     ",char:"国美"},
+{pingyin:"jiǎng tái   ",char:"讲台"},
+{pingyin:"fēn jī      ",char:"分机"},
+{pingyin:"biān mén    ",char:"边门"},
+{pingyin:"shuǐ biān   ",char:"水边"},
+{pingyin:"wǔ jiā      ",char:"五加"},
+{pingyin:"wài bian    ",char:"外边"},
+{pingyin:"měi shí     ",char:"美石"},
+{pingyin:"měi rén     ",char:"美人"},
+{pingyin:"shǒu jī     ",char:"手机"},
+{pingyin:"Měi wǎng    ",char:"美网"},
+{pingyin:"xuě liàng   ",char:"雪亮"},
+{pingyin:"Shuāng yú   ",char:"双鱼"},
+{pingyin:"hū jī       ",char:"呼机"},
+{pingyin:"zhǔ jī      ",char:"主机"},
+{pingyin:"jiā shàng   ",char:"加上"},
+{pingyin:"fēi yú      ",char:"飞鱼"},
+{pingyin:"huā ní      ",char:"花呢"},
+{pingyin:"huā duǒ     ",char:"花朵"},
+{pingyin:"jīn yú      ",char:"金鱼"},
+{pingyin:"Tái qián    ",char:"台前"},
+{pingyin:"bù jiā      ",char:"不加"},
+{pingyin:"chuáng biān ",char:"床边"},
+{pingyin:"zhí fēi     ",char:"直飞"},
+{pingyin:"yú huā      ",char:"鱼花"},
+{pingyin:"Měi guó     ",char:"美国"},
+{pingyin:"yī biān     ",char:"一边"},
+{pingyin:"jiā rù      ",char:"加入"},
+{pingyin:"tiān liàng  ",char:"天亮"},
+{pingyin:"tái fēng    ",char:"台风"},
+{pingyin:"jī yùn      ",char:"机运"},
+{pingyin:"biān yīn    ",char:"边音"},
+{pingyin:"fàng fēng   ",char:"放风"},
+{pingyin:"Měi Jiā     ",char:"美加"},
+{pingyin:"Tái jiāng   ",char:"台江"},
+{pingyin:"Měi Rì      ",char:"美日"},
+{pingyin:"Tiān tāi    ",char:"天台"},
+{pingyin:"wú biān     ",char:"无边"},
+{pingyin:"yàng jī     ",char:"样机"},
+{pingyin:"yī zhí      ",char:"一直"},
+{pingyin:"yú chóng    ",char:"鱼虫"},
+{pingyin:"bā zhǔ      ",char:"吧主"},
+{pingyin:"wǎng bā     ",char:"网吧"},
+{pingyin:"fàng qíng   ",char:"放情"},
+{pingyin:"rén yú      ",char:"人鱼"},
+{pingyin:"yún duǒ     ",char:"云朵"},
+{pingyin:"xià fàng    ",char:"下放"},
+{pingyin:"wài jiā     ",char:"外加"},
+{pingyin:"Tái běi     ",char:"台北"},
+{pingyin:"Qī měi      ",char:"七美"},
+{pingyin:"shí jī      ",char:"时机"},
+{pingyin:"Yú tái      ",char:"鱼台"},
+{pingyin:"zhe ne      ",char:"着呢"},
+{pingyin:"fàng yīn    ",char:"放音"},
+{pingyin:"shēn biān   ",char:"身边"},
+{pingyin:"jī zi       ",char:"机子"},
+{pingyin:"Jiā guó     ",char:"加国"},
+{pingyin:"sì biān     ",char:"四边"},
+{pingyin:"jī huì      ",char:"机会"},
+{pingyin:"zhàn tái    ",char:"站台"},
+{pingyin:"měi yù      ",char:"美玉"},
+{pingyin:"Yú chí      ",char:"鱼池"},
+{pingyin:"Jiǔ tái     ",char:"九台"},
+{pingyin:"yú wǎng     ",char:"鱼网"},
+{pingyin:"zhí xíng    ",char:"直行"},
+{pingyin:"fēi jī      ",char:"飞机"},
+{pingyin:"xiàng jī    ",char:"相机"},
+{pingyin:"zhuō jī     ",char:"桌机"},
+{pingyin:"fàng dī     ",char:"放低"},
+{pingyin:"niǎo jī     ",char:"鸟机"},
+{pingyin:"zhè biān    ",char:"这边"},
+{pingyin:"Sān tái     ",char:"三台"},
+{pingyin:"běi biān    ",char:"北边"},
+{pingyin:"dàng jī     ",char:"当机"},
+{pingyin:"tái xià     ",char:"台下"},
+{pingyin:"dòng jī     ",char:"动机"},
+{pingyin:"hóng jī     ",char:"红机"},
+{pingyin:"fàng niǎo   ",char:"放鸟"},
+{pingyin:"bā tái      ",char:"吧台"},
+{pingyin:"tái cí      ",char:"台词"},
+{pingyin:"Tái yǔ      ",char:"台语"},
+{pingyin:"yú zhǒng    ",char:"鱼种"},
+{pingyin:"dān biān    ",char:"单边"},
+{pingyin:"yú shuǐ     ",char:"鱼水"},
+{pingyin:"dǎ yú       ",char:"打鱼"},
+{pingyin:"Měi yǔ      ",char:"美语"},
+{pingyin:"fàng shǒu   ",char:"放手"},
+{pingyin:"huā biān    ",char:"花边"},
+{pingyin:"ěr duo      ",char:"耳朵"},
+{pingyin:"tái fēng    ",char:"台风"},
+{pingyin:"shàng bian  ",char:"上边"},
+{pingyin:"jiā shí     ",char:"加时"},
+{pingyin:"Tái shān    ",char:"台山"},
+{pingyin:"fàng zǒu    ",char:"放走"},
+{pingyin:"Bā měi      ",char:"八美"},
+{pingyin:"duì Měi     ",char:"对美"},
+{pingyin:"yú zǐ       ",char:"鱼子"},
+{pingyin:"fàng huǒ    ",char:"放火"},
+{pingyin:"qián bian   ",char:"前边"},
+{pingyin:"Tái yǔ      ",char:"台语"},
+{pingyin:"wú jī       ",char:"无机"},
+{pingyin:"jiā kuài    ",char:"加快"},
+{pingyin:"jiā qì      ",char:"加气"},
+{pingyin:"zuǒ bian    ",char:"左边"},
+{pingyin:"Měi yǔ      ",char:"美语"},
+{pingyin:"shēng jī    ",char:"生机"},
+{pingyin:"fàng yīn    ",char:"放音"},
+{pingyin:"Jīn biān    ",char:"金边"},
+{pingyin:"jī shēn     ",char:"机身"},
+{pingyin:"dǎ yú       ",char:"打鱼"},
+{pingyin:"shuǐ liàng  ",char:"水亮"}]
+var pindex = 0;
+var step = 0;
+      function start(){
+        next()
+      }
+      function next(){
+          if(pindex >= pinyins.length) alert("完成了");
+          if(step%2==0){
+              document.getElementById("pinyin").innerHTML = pinyins[pindex].pingyin;
+              document.getElementById("char").innerHTML = "";
+          }else{
+              document.getElementById("char").innerHTML = pinyins[pindex].char;
+              pindex++
+          }
+          step++
+      }
+  </script>
+
+
+</body>
+
+</html>
