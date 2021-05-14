@@ -67,6 +67,11 @@
       </nav>
     </header>
     <div class="pricing-header p-3 pb-md-4 mx-auto text-center d-flex">
+      <input type='text' id='number' class='form-control' style='width:60px;' onchange='changeIndex(this.value)'/>
+      <span class="fw-normal my-auto mx-1" id=''>/</span>
+       <span class="fw-normal my-auto" id='total'></span>
+    </div>
+    <div class="pricing-header p-3 pb-md-4 mx-auto text-center d-flex">
       <h1 class="fw-normal" id='pinyin'>??? ???</h1>
     </div>
     
@@ -265,12 +270,18 @@
 {pingyin:"jī shēn     ",char:"机身"},
 {pingyin:"dǎ yú       ",char:"打鱼"},
 {pingyin:"shuǐ liàng  ",char:"水亮"}]
-var pindex = 0;
+var pindex = document.cookie?document.cookie:0;
 var step = 0;
       function start(){
         next()
       }
+      function changeIndex(index){
+        pindex = index - 1
+        step = 0
+      }
       function next(){
+          document.getElementById("number").value = pindex + 1;
+          document.getElementById("total").innerHTML = pinyins.length;
           if(pindex >= pinyins.length) alert("完成了");
           if(step%2==0){
               document.getElementById("pinyin").innerHTML = pinyins[pindex].pingyin;
@@ -280,6 +291,7 @@ var step = 0;
               pindex++
           }
           step++
+          document.cookie = "pindex="+pindex+";"
       }
   </script>
 

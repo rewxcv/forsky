@@ -1,9 +1,19 @@
+let {gradeOneFirstWrite,gradeOneFirstRead,gradeOneSecondWrite } = require("./chars.js");
 var a = "                              "
+var OUTPUT_FOFRMAT = {PINYIN_CHARS_JSON:'pcjson'}
 function printSingleResult(item){
   var str = item.pronunciation + a.substring(item.pronunciation.length) + item.simplified + " : " + item.definitions
   console.log(str);
 }
-function printResult(result) {
+function printResult(result, outFormat) {
+  if(OUTPUT_FOFRMAT.PINYIN_CHARS_JSON == outFormat){
+    outResult = []
+    result.forEach((item) => {
+      outResult.push({pingyin: item.pronunciation, char:item.simplified})
+    })
+    console.log(JSON.stringify(outResult))
+    return 
+  }
  
   result.forEach((item) => {
     printSingleResult(item)
@@ -17,62 +27,35 @@ function shuffle(arr) {
   }
 }
 const cedict = require('coupling-dict-chinese');
-var gradeOneFirstWrite = "天地人你我他一二三四五上下口耳目手足站坐日月水火山石田禾对云雨风花鸟虫六七八九十爸妈马土不画打棋鸡字词语句子桌纸文数学音乐".split("")
-var gradeOneFirstRead = "天地人你我".split("");
-var gradeOneSecondWrite = ("春冬风雪花飞入" // lesson 1 识字1
-  + "姓什么双国王方"//lesson 2 识字2
-  + "青清气晴情请生"//lesson 3 识字3
-  + "字左右红时动万"//lesson 4 识字4
-  + "吃叫主江住没以"//lesson 1 课文1
-  + "会走北京门广"//lesson 2 课文2
-  + "过各种样伙伴这"//lesson3 课文3
-  + "太阳校金秋因为"//lesson4 课文4
-  + "他地河说也听哥"//课文5
-  + "单局招呼快乐"//课文6
-  + "玩很当音讲行许"//课文7
-  + "思床前光低故乡"//课文8
-  + "色外看爸晚笑再"//课文9
-  + "午节叶米真分豆"//课文10
-  + "那着到高兴千成"//课文11
-  + "间迷造运池欢网"//识字5
-  + "古凉细夕李语香"//识字6
-  + "打拍跑足声身体"//识字7
-  + "之相近习远玉义"//识字8
-  + "首采无树爱尖角"//课文12
-  + "亮机台放鱼朵美"//课文13
-  + "直呀边呢吗吧加"//课文14
-  //+ "文次找平办让包"//课文15
-  //+ "钟丁元共已经坐"//课文16
-  //+ "要连百还舌点"//课文17
-  //+ "块非常往瓜进空"//课文18
-  //+ "医病别干奇七星"//课文19
-  //+ "吓怕跟家羊象都"//课文20
-  //+ "捉条爬姐您草房"//课文21
-).split("");
-var mustInclude = "亮机台放鱼朵美直呀边呢吗吧加".split("");
-var result = []
-var promises = [];
-var allWrite = gradeOneFirstWrite.concat(gradeOneSecondWrite);
-var scope = allWrite;
-var cbCnt = 0
-scope.forEach((item) => {
-  scope.forEach((itemin) => {
-    if (mustInclude && (mustInclude.indexOf(item) < 0 && mustInclude.indexOf(itemin) < 0)) {
-      return;
-    }
-    cbCnt++
-    var temp = cedict.searchByChinese(item + itemin, words => {
-      cbCnt--
-      if (words && words.length) {
-        for(var i = 0; i < 3; i++){
-          if(words[i]) result.push(words[i])
+function genPinyins(mustInclude, outFormat){
+
+  var mustInclude = mustInclude.split("");
+  var result = []
+  var promises = [];
+  var allWrite = gradeOneFirstWrite.concat(gradeOneSecondWrite);
+  var scope = allWrite;
+  var cbCnt = 0
+  scope.forEach((item) => {
+    scope.forEach((itemin) => {
+      if (mustInclude && (mustInclude.indexOf(item) < 0 && mustInclude.indexOf(itemin) < 0)) {
+        return;
+      }
+      cbCnt++
+      var temp = cedict.searchByChinese(item + itemin, words => {
+        cbCnt--
+        if (words && words.length) {
+          for(var i = 0; i < 3; i++){
+            if(words[i]) result.push(words[i])
+          }
+          //printSingleResult(words[0])
         }
-        //printSingleResult(words[0])
-      }
-      if(cbCnt == 0){
-        shuffle(result)
-        printResult(result)
-      }
+        if(cbCnt == 0){
+          shuffle(result)
+          printResult(result, outFormat)
+        }
+      })
     })
   })
-})
+}
+genPinyins("直", OUTPUT_FOFRMAT.PINYIN_CHARS_JSON);
+//module.exports = genPinyins;
