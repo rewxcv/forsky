@@ -31,7 +31,6 @@ function genPinyins(mustInclude, outFormat){
 
   var mustInclude = mustInclude.split("");
   var result = []
-  var promises = [];
   var allWrite = gradeOneFirstWrite.concat(gradeOneSecondWrite);
   var scope = allWrite;
   var cbCnt = 0
@@ -57,5 +56,6 @@ function genPinyins(mustInclude, outFormat){
     })
   })
 }
-genPinyins("直", OUTPUT_FOFRMAT.PINYIN_CHARS_JSON);
+var mustInclude = "文次找平办让包"
+genPinyins(mustInclude, OUTPUT_FOFRMAT.PINYIN_CHARS_JSON);
 //module.exports = genPinyins;

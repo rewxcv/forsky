@@ -3,7 +3,7 @@ function getAFormula(rangeMin, rangeMax,  numOfDig) {
         var num1 = Math.round(Math.random() * Math.pow(10,numOfDig));
         var num2 = Math.round(Math.random() * Math.pow(10,numOfDig));
         var isPlus = Math.random() > 0.5;
-        if(isPlus)continue;
+        // if(isPlus)continue;
         if (num1 < Math.pow(10, numOfDig-1) && num2 < Math.pow(10, numOfDig-1)) {
             continue;
         }
