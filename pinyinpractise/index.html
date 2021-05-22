@@ -187,7 +187,9 @@
 {"pingyin":"cì shù","char":"次数"},
 {"pingyin":"wén sī","char":"文思"}]
 ;
-var pindex = document.cookie&&document.cookie.match(/pindex2_15=(\d+)/)[1]?parseInt(document.cookie.match(/pindex=(\d+)/)[1]):0;
+var indexName = "pindex2_15"
+var indexReg = /pindex2_15=(\d+)/
+var pindex = document.cookie&&document.cookie.match(indexReg)&&document.cookie.match(indexReg)[1]?parseInt(document.cookie.match(indexReg)[1]):0;
 var step = 0;
       function start(){
         next()
@@ -208,7 +210,7 @@ var step = 0;
               pindex++
           }
           step++
-          document.cookie = "pindex2-15="+pindex+";"
+          document.cookie = indexName + "=" + pindex + ";"
       }
   </script>
 
