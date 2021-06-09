@@ -56,6 +56,6 @@ function genPinyins(mustInclude, outFormat){
     })
   })
 }
-var mustInclude = "钟丁元共已经坐要连百还舌点块非常往瓜进空"
+var mustInclude = "医病别干奇七星吓怕跟家羊象都"
 genPinyins(mustInclude, OUTPUT_FOFRMAT.PINYIN_CHARS_JSON);
 //module.exports = genPinyins;

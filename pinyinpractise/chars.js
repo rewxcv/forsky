@@ -26,8 +26,8 @@ var gradeOneSecondWrite = ("春冬风雪花飞入" // lesson 1 识字1
   + "钟丁元共已经坐"//课文16
   + "要连百还舌点"//课文17
   + "块非常往瓜进空"//课文18
-  //+ "医病别干奇七星"//课文19
-  //+ "吓怕跟家羊象都"//课文20
+  + "医病别干奇七星"//课文19
+  + "吓怕跟家羊象都"//课文20
   //+ "捉条爬姐您草房"//课文21
 ).split("");
 module.exports = {gradeOneFirstWrite,gradeOneFirstRead,gradeOneSecondWrite }

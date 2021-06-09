@@ -3,14 +3,15 @@
 <body onload='init()'>
     <div style=' height: 400px; border-color: black;' id='playground'>
         <div id='ball'
-            style='position:relative;top:0;left:0px;width:50px;height: 50px;background-color: red;border-radius: 25px;'>
+            style='position:relative;top:0px;left:0px;width:50px;height: 50px;background-color: red;border-radius: 25px;'>
         </div>
         <div style='float:right;margin-top: 350px;' id='distance'></div>
     </div>
-    <hr />
-    速度m/s->：<input type='text' class='form-control' id='speed' />
+    <hr style='margin-top: 0px'/>
+    →速度(米/秒)：<input type='text' class='form-control' id='speedx' />
+    ↓速度(米/秒)：<input type='text' class='form-control' id='speedy' />
     <!--角度：<input type='text' class='form-control' id='angle' /-->
-    <button class='btn' onclick="踢球()">踢球</button>
+    <button class='btn' onclick="踢球()">出发</button>
 </body>
 <script>
     var g = 9.8 * 0.5
@@ -18,37 +19,41 @@
     var 开始时间 = 0;
     var 初始速度 = 0;
     var direction = 270;
-    function 计算横向距离(t, v){
+    function 计算横向距离(t, v, direction){
         return v * t * scale;
     }
     function 计算纵向距离(t, v, direction){
-        return 0;//v * Math.sin( direction/180 * Math.PI ) +
+        return v * t * scale;//v * Math.sin( direction/180 * Math.PI ) +
          //g * t * t * scale;
     }
     function 踢球() {
         开始时间 = new Date().getTime()/1000
         height = parseInt(document.getElementById("playground").style.height.replaceAll("px", ""))
-        初始速度 = 获得速度()
+        
         var id = window.setInterval(function () {
-            x = 计算横向距离(现在时间() - 开始时间, 初始速度);
-            y = 计算纵向距离(现在时间() - 开始时间);
+            x = 计算横向距离(现在时间() - 开始时间, 获得横向速度());
+            y = 计算纵向距离(现在时间() - 开始时间, 获得纵向速度());
             document.getElementById("ball").style.left = x
             document.getElementById("ball").style.top = y
-            document.getElementById("ball").innerHTML = Math.floor(现在时间()*10 - 开始时间*10)/10
-            if(x + 50 >= document.getElementById("playground").offsetWidth) {
+            document.getElementById("ball").innerHTML = Math.floor(现在时间()*100 - 开始时间*100)/100
+            if(x + 50 >= document.getElementById("playground").offsetWidth 
+            || y + 50 >= document.getElementById("playground").offsetHeight) {
                 window.clearInterval(id)
             }
-        }, 0.1)
+        }, 0.01)
     }
-    function 获得速度(){
-        return document.getElementById("speed").value;
+    function 获得横向速度(){
+        return document.getElementById("speedx").value;
+    }
+    function 获得纵向速度(){
+        return document.getElementById("speedy").value;
     }
     function 现在时间(){
         return new Date().getTime()/1000;
     }
     function init(){
         document.getElementById("distance").innerHTML =
-        document.getElementById("playground").offsetWidth/10 + "米";
+        (document.getElementById("playground").offsetWidth-50)/10 + "米";
     }
 </script>
 
