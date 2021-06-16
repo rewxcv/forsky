@@ -28,6 +28,6 @@ var gradeOneSecondWrite = ("春冬风雪花飞入" // lesson 1 识字1
   + "块非常往瓜进空"//课文18
   + "医病别干奇七星"//课文19
   + "吓怕跟家羊象都"//课文20
-  //+ "捉条爬姐您草房"//课文21
+  + "捉条爬姐您草房"//课文21
 ).split("");
 module.exports = {gradeOneFirstWrite,gradeOneFirstRead,gradeOneSecondWrite }

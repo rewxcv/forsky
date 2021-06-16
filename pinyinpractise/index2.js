@@ -40,7 +40,14 @@ var gradeOneSecondWrite = ("春冬风雪花飞入" // lesson 1 识字1
   + "之相近习远玉义"//识字8
   + "首采无树爱尖角"//课文12
   + "亮机台放鱼朵美"//课文13
-  + "值呀边呢吗吧加"//课文14
+  + "直呀边呢吗吧加"//课文14
+  + "文次找平办让包"//课文15
+  + "钟丁元共已经坐"//课文16
+  + "要连百还舌点"//课文17
+  + "块非常往瓜进空"//课文18
+  + "医病别干奇七星"//课文19
+  + "吓怕跟家羊象都"//课文20
+  + "捉条爬姐您草房"//课文21
 ).split("");
 var mustInclude = undefined;
 var result = []
@@ -48,6 +55,6 @@ var promises = [];
 var allWrite = gradeOneFirstWrite.concat(gradeOneSecondWrite);
 var scope = allWrite;
 var cbCnt = 0
-shuffle(gradeOneFirstWrite)
-console.log(JSON.stringify(gradeOneFirstWrite))
+shuffle(gradeOneSecondWrite)
+console.log(JSON.stringify(gradeOneSecondWrite))
 // 2021.5.9 测验 许这到运讲成时风欢足相听
