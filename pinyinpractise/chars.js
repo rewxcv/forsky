@@ -1,5 +1,5 @@
 var gradeOneFirstWrite = "天地人你我他一二三四五上下口耳目手足站坐日月水火山石田禾对云雨风花鸟虫六七八九十爸妈马土不画打棋鸡字词语句子桌纸文数学音乐".split("")
-var gradeOneFirstRead = "天地人你我".split("");
+var gradeOneFirstRead = []
 var gradeOneSecondWrite = ("春冬风雪花飞入" // lesson 1 识字1
   + "姓什么双国王方"//lesson 2 识字2
   + "青清气晴情请生"//lesson 3 识字3
