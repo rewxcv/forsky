@@ -28,8 +28,9 @@ function shuffle(arr) {
 }
 const cedict = require('coupling-dict-chinese');
 function genPinyins(mustInclude, outFormat){
-
-  var mustInclude = mustInclude.split("");
+  if(mustInclude){
+    mustInclude = mustInclude.split("");
+  }
   var result = []
   var allWrite = gradeOneFirstWrite.concat(gradeOneSecondWrite);
   var scope = allWrite;
@@ -43,7 +44,7 @@ function genPinyins(mustInclude, outFormat){
       var temp = cedict.searchByChinese(item + itemin, words => {
         cbCnt--
         if (words && words.length) {
-          for(var i = 0; i < 3; i++){
+          for(var i = 0; i < 2; i++){
             if(words[i]) result.push(words[i])
           }
           //printSingleResult(words[0])
@@ -56,6 +57,6 @@ function genPinyins(mustInclude, outFormat){
     })
   })
 }
-var mustInclude = "捉条爬姐您草房"
+var mustInclude = null //"捉条爬姐您草房"
 genPinyins(mustInclude, OUTPUT_FOFRMAT.PINYIN_CHARS_JSON);
 //module.exports = genPinyins;
