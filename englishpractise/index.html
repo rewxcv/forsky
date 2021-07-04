@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+  <meta name="generator" content="Hugo 0.82.0">
+  <title>Pricing example · Bootstrap v5.0</title>
+
+  <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/pricing/">
+
+
+
+  <!-- Bootstrap core CSS -->
+  <link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <style>
+    .bd-placeholder-img {
+      font-size: 1.125rem;
+      text-anchor: middle;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      user-select: none;
+    }
+
+    @media (min-width: 768px) {
+      .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+      }
+    }
+  </style>
+
+
+  <!-- Custom styles for this template -->
+  <link href="pricing.css" rel="stylesheet">
+</head>
+
+<body onclick="next()">
+
+  <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+    <symbol id="check" viewBox="0 0 16 16">
+      <title>Check</title>
+      <path
+        d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z" />
+    </symbol>
+  </svg>
+
+  <div class="container py-3">
+    <header class="d-flex flex-column flex-md-row align-items-center pb-3 mb-4 border-bottom">
+      <a href="/" class="d-flex align-items-center text-dark text-decoration-none">
+        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="32" class="me-2" viewBox="0 0 118 94" role="img">
+          <title>Bootstrap</title>
+          <path fill-rule="evenodd" clip-rule="evenodd"
+            d="M24.509 0c-6.733 0-11.715 5.893-11.492 12.284.214 6.14-.064 14.092-2.066 20.577C8.943 39.365 5.547 43.485 0 44.014v5.972c5.547.529 8.943 4.649 10.951 11.153 2.002 6.485 2.28 14.437 2.066 20.577C12.794 88.106 17.776 94 24.51 94H93.5c6.733 0 11.714-5.893 11.491-12.284-.214-6.14.064-14.092 2.066-20.577 2.009-6.504 5.396-10.624 10.943-11.153v-5.972c-5.547-.529-8.934-4.649-10.943-11.153-2.002-6.484-2.28-14.437-2.066-20.577C105.214 5.894 100.233 0 93.5 0H24.508zM80 57.863C80 66.663 73.436 72 62.543 72H44a2 2 0 01-2-2V24a2 2 0 012-2h18.437c9.083 0 15.044 4.92 15.044 12.474 0 5.302-4.01 10.049-9.119 10.88v.277C75.317 46.394 80 51.21 80 57.863zM60.521 28.34H49.948v14.934h8.905c6.884 0 10.68-2.772 10.68-7.727 0-4.643-3.264-7.207-9.012-7.207zM49.948 49.2v16.458H60.91c7.167 0 10.964-2.876 10.964-8.281 0-5.406-3.903-8.178-11.425-8.178H49.948z"
+            fill="currentColor"></path>
+        </svg>
+        <span class="fs-4" id=''>Hi, Sky. Let's do it</span>
+      </a>
+
+      <nav class="d-inline-flex mt-2 mt-md-0 ms-md-auto">
+        <a class="me-3 py-2 text-dark text-decoration-none" href="#"></a>
+        <a class="me-3 py-2 text-dark text-decoration-none" href="#"></a>
+        <a class="me-3 py-2 text-dark text-decoration-none" href="#"></a>
+        <a class="py-2 text-dark text-decoration-none" href="#"></a>
+      </nav>
+    </header>
+    <div class="pricing-header p-3 pb-md-4 mx-auto text-center d-flex">
+      <input type='text' id='number' class='form-control' style='width:60px;' onchange='changeIndex(this.value)'/>
+      <span class="fw-normal my-auto mx-1" id=''>/</span>
+       <span class="fw-normal my-auto" id='total'></span>
+    </div>
+    <div class="pricing-header p-3 pb-md-4 mx-auto text-center d-flex">
+      <h1 class="fw-normal" id='pinyin'>??? ???</h1>
+    </div>
+    
+    <div class="pricing-header p-3 pb-md-4 mx-auto text-center d-flex">
+        <h1 class="fw-normal" id='char'></h1>
+    </div>
+
+    <main>
+    </main>
+
+  </div>
+  <script>
+      var pinyins =
+      [{"pingyin":"eleven","char":"十一"},
+{"pingyin":"eye","char":"眼睛"},
+{"pingyin":"there are","char":"有，存在"},
+{"pingyin":"look","char":"看"},
+{"pingyin":"at","char":"在"},
+{"pingyin":"with","char":"用......"},
+{"pingyin":"baby","char":" 婴儿"},
+{"pingyin":"dance","char":"跳舞"},
+{"pingyin":"sock","char":"短袜"},
+{"pingyin":"know","char":"知道"},
+{"pingyin":"in","char":"在......里"},
+{"pingyin":"go swimming","char":"去游泳"},
+{"pingyin":"bed","char":"床"},
+{"pingyin":"guess","char":"猜"},
+{"pingyin":"put on","char":"穿上，戴上"},
+{"pingyin":"tall","char":"高的"},
+{"pingyin":"together","char":"一起"},
+{"pingyin":"can","char":"可以，能"},
+{"pingyin":"nurse","char":"护士"},
+{"pingyin":"under","char":"在......下"},
+{"pingyin":"giraffe","char":"长颈鹿"},
+{"pingyin":"big","char":"大的"},
+{"pingyin":"cow","char":"奶牛"},
+{"pingyin":"litte","char":"小的"},
+{"pingyin":"touch","char":"触摸"},
+{"pingyin":"other","char":"其他"},
+{"pingyin":"them","char":"他 们"},
+{"pingyin":"swim","char":"游泳"},
+{"pingyin":"body","char":"身体"},
+{"pingyin":"they","char":"他（她/它)们"},
+{"pingyin":"on","char":"在......上"},
+{"pingyin":"ping-pong","char":"乒乓球"},
+{"pingyin":"small","char":"小的"},
+{"pingyin":"they're = they are","char":"他（她/它)们是"},
+{"pingyin":"farm","char":"农场"},
+{"pingyin":"very","char":"很，非常"},
+{"pingyin":"snake","char":"蛇"},
+{"pingyin":"chicken","char":"鸡"},
+{"pingyin":"clothes","char":"（常复）衣服"},
+{"pingyin":"we","char":"我们"},
+{"pingyin":"thin","char":"瘦的"},
+{"pingyin":"hot","char":"热的"},
+{"pingyin":"lion","char":"狮 子"},
+{"pingyin":"idea","char":"主意，想法"},
+{"pingyin":"over there","char":"在那边"},
+{"pingyin":"duck","char":"鸭子"},
+{"pingyin":"swimming","char":"游泳"},
+{"pingyin":"tired","char":"累的，疲惫的"},
+{"pingyin":"pupil","char":"学生，小学生"},
+{"pingyin":"policeman","char":"警察"},
+{"pingyin":"sing","char":"唱，唱歌"},
+{"pingyin":"go","char":"去"},
+{"pingyin":"she","char":"她"},
+{"pingyin":"zoo","char":"动物园"},
+{"pingyin":"basketball","char":"篮球"},
+{"pingyin":"leg","char":"腿"},
+{"pingyin":"a pair of","char":"一双，一对"},
+{"pingyin":"fat","char":"胖的"},
+{"pingyin":"let's","char":"让我们"},
+{"pingyin":"horse","char":"马"},
+{"pingyin":"fish","char":"鱼"},
+{"pingyin":"short","char":"矮的，短的"},
+{"pingyin":"where","char":"哪里"},
+{"pingyin":"there is","char":"有，存在"},
+{"pingyin":"OK","char":"行，好"},
+{"pingyin":"like","char":"喜欢"},
+{"pingyin":"cute","char":"可爱的，乖巧的"},
+{"pingyin":"twelve","char":"十二"},
+{"pingyin":"hand","char":"手"},
+{"pingyin":"head","char":"头"},
+{"pingyin":"football","char":"足球"},
+{"pingyin":"he","char":"他"},
+{"pingyin":"long","char":"长的"},
+{"pingyin":"aren't = are not","char":"不，不是"},
+{"pingyin":"play","char":"参加"},
+{"pingyin":"toy","char":"玩具"},
+{"pingyin":"driver","char":"司机"},
+{"pingyin":"some","char":"一些"},
+{"pingyin":"sport","char":"运动"},
+{"pingyin":"don't = do not","char":"不"},
+{"pingyin":"see","char":"看见"},
+{"pingyin":"me","char":"我"},
+{"pingyin":"tree","char":"树"},
+{"pingyin":"hat","char":"帽子"},
+{"pingyin":"feet","char":"脚（foot的复数形式）"},
+{"pingyin":"bear","char":"熊"},
+{"pingyin":"strong","char":"强壮的"},
+{"pingyin":"here","char":"这里"},
+{"pingyin":"egg","char":"鸡蛋，蛋"},
+{"pingyin":"animal","char":"动物"},
+{"pingyin":"pig","char":"猪"},
+{"pingyin":"table","char":"桌子"},
+{"pingyin":"docker","char":"医生"},
+{"pingyin":"tiger","char":"老虎"},
+{"pingyin":"elephant","char":"大象"},
+{"pingyin":"these","char":"这些"},
+{"pingyin":"help","char":"帮助"},
+{"pingyin":"all","char":"全部，所有"},
+{"pingyin":"favourite","char":"最喜欢的"},
+{"pingyin":"what about...?","char":"...怎么样？"}]
+;
+var indexName = "pindex2_15"
+var indexReg = /pindex2_15=(\d+)/
+var pindex = document.cookie&&document.cookie.match(indexReg)&&document.cookie.match(indexReg)[1]?parseInt(document.cookie.match(indexReg)[1]):0;
+var step = 0;
+      function start(){
+        next()
+      }
+      function changeIndex(index){
+        pindex = index - 1
+        step = 0
+      }
+      function next(){
+          document.getElementById("number").value = pindex + 1;
+          document.getElementById("total").innerHTML = pinyins.length;
+          if(pindex >= pinyins.length) alert("完成了");
+          if(step%2==0){
+              document.getElementById("pinyin").innerHTML = pinyins[pindex].pingyin;
+              document.getElementById("char").innerHTML = "";
+          }else{
+              document.getElementById("char").innerHTML = pinyins[pindex].char;
+              pindex++
+          }
+          step++
+          document.cookie = indexName + "=" + pindex + ";"
+      }
+  </script>
+
+
+</body>
+
+</html>
