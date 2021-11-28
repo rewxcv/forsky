@@ -78,6 +78,10 @@
           加减法比率：<input type="range" name='addMinusRate' value='70' class='form-control-range'
             onchange="if(parseInt(this.value)>100)this.value=100;" /> <br>
         </div>
+        <div class="form-group col-md-6">
+          题目数：<input type="text" name='questionNum' value='60' class='form-control'
+            onchange="if(parseInt(this.value)>100)this.value=100;" /> <br>
+        </div>
       </div>
       <div class="form-row">
         <div class="form-group col-md-6">
@@ -120,35 +124,39 @@
         addMinusMaxvalue: intVal("addMinusMaxvalue"),
         pyDcDgNum: intVal("pyDcDgNum"),
         pyDcMaxvalue: intVal("pyDcMaxvalue"),
+        questionNum: intVal("questionNum")
       }
 
       var result;
-      document.write("<style>@page {size: A4;font} table{font-size:8pt;} @media print{.no-print{display: none !important;}}</style>")
+      document.write("<style>@page {size: A4;font} table{font-size:7pt;} @media print{.no-print{display: none !important;}}</style>")
       
       
       document.write("<div class=''>")
       document.write("<button onclick='window.print()' class='no-print' id='start'>打 印</button>")
-      result = genFormulars(60);
-      var resultStr = "<table style='width:100%'><tr>";
+      result = genFormulars(settings.questionNum);
+      var resultStr = "<div style='height:50%'><table style='width:100%;'><tr>";
       result.forEach((item, index) => {
         resultStr += "<td>" + item + "</td>";
         if ((index + 1) % 4 == 0) resultStr += "</tr><tr>"
       })
       resultStr += "</tr></table>"
       document.write(resultStr)
+      document.write("</div>")
 
       document.write("<hr/>")
 
-      result = genFormulars(60);
-      var resultStr = "<table style='width:100%'><tr>";
+      result = genFormulars(settings.questionNum);
+      var resultStr = "<div style='height:50%'><table style='width:100%;'><tr>";
       result.forEach((item, index) => {
         resultStr += "<td>" + item + "</td>";
         if ((index + 1) % 4 == 0) resultStr += "</tr><tr>"
       })
       resultStr += "</tr></table>"
       document.write(resultStr)
-
       document.write("</div>")
+      
+      document.write("</div>")
+
     }
     function intVal(name) {
       return parseInt(document.getElementsByName(name)[0].value);
