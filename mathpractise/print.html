@@ -80,7 +80,7 @@
         </div>
         <div class="form-group col-md-6">
           题目数：<input type="text" name='questionNum' value='60' class='form-control'
-            onchange="if(parseInt(this.value)>100)this.value=100;" /> <br>
+            onchange="if(parseInt(this.value)>72)this.value=72;" /> <br>
         </div>
       </div>
       <div class="form-row">
@@ -92,7 +92,7 @@
           最大值：<input name='addMinusMaxvalue' value='100' class='form-control' />
         </div>
       </div>
-      <hr>
+
       <div class="form-row">
         <div class="form-group col-md-6">
           乘除法比率：- <br>
@@ -109,12 +109,14 @@
       </div>
     </div>
     <button onclick='start()' class='btn btn-primary' id='start'>打 印</button>
+    <hr/>
+    <button onclick='start("divide")' class='btn btn-primary' id='start'>打 印(带余数除法）</button>
   </div>
 
   </div>
   <script src='./formularGenerator.js'></script>
   <script>
-    function start() {
+    function start(formulaType) {
 
       intVal("addMinusRate")
 
@@ -128,13 +130,13 @@
       }
 
       var result;
-      document.write("<style>@page {size: A4;font} table{font-size:7pt;} @media print{.no-print{display: none !important;}}</style>")
-      
-      
+      document.write("<style>@page {size: A4;font} table{font-size:14pt;} @media print{.no-print{display: none !important;}}</style>")
+
+
       document.write("<div class=''>")
       document.write("<button onclick='window.print()' class='no-print' id='start'>打 印</button>")
-      result = genFormulars(settings.questionNum);
-      var resultStr = "<div style='height:50%'><table style='width:100%;'><tr>";
+      result = genFormulars(settings.questionNum, formulaType);
+      var resultStr = "<div style='height:48%'><table style='width:100%;'><tr>";
       result.forEach((item, index) => {
         resultStr += "<td>" + item + "</td>";
         if ((index + 1) % 4 == 0) resultStr += "</tr><tr>"
@@ -145,8 +147,8 @@
 
       document.write("<hr/>")
 
-      result = genFormulars(settings.questionNum);
-      var resultStr = "<div style='height:50%'><table style='width:100%;'><tr>";
+      result = genFormulars(settings.questionNum, formulaType);
+      var resultStr = "<div style='height:48%'><table style='width:100%;'><tr>";
       result.forEach((item, index) => {
         resultStr += "<td>" + item + "</td>";
         if ((index + 1) % 4 == 0) resultStr += "</tr><tr>"
@@ -154,7 +156,7 @@
       resultStr += "</tr></table>"
       document.write(resultStr)
       document.write("</div>")
-      
+
       document.write("</div>")
 
     }
@@ -164,14 +166,31 @@
     function floatVal(name) {
       return parseFloat(document.getElementsByName(name)[0].value);
     }
-    function genFormulars(count) {
+    function genFormulars(questionNum, formulaType) {
       var count = 0;
       var result = []
-      while (count < 60) {
+      while (count < questionNum) {
+        if(formulaType == "divide"){
+          result.push(
+            toFormulaStr(
+              getDivideFormula(89, 9, 9, false, true)
+            ) + " = "
+
+          )
+        }else 
         if (Math.random() > settings.addMinusRate / 100) {
-          result.push(getPyFormula(settings.pyDcMaxvalue, settings.pyDcDgNum))
+          result.push(
+            toFormulaStr(
+              getPyFormula(settings.pyDcMaxvalue, settings.pyDcDgNum)
+            ) + " = "
+
+          )
         } else {
-          result.push(getAFormula(0, settings.addMinusMaxvalue, settings.addMinusDgNum))
+          result.push(
+            toFormulaStr(
+              getAFormula(0, settings.addMinusMaxvalue, settings.addMinusDgNum)
+            ) + " = "
+          )
         }
         count++
       }

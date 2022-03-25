@@ -89,7 +89,7 @@
   <script src='./formularGenerator.js'></script>
   <script>
 
-  var settings = {
+    var settings = {
       rangeMin: 0,
       rangeMax: 100,
       numOfDig: 2,
@@ -116,7 +116,10 @@
       document.getElementById('result').focus();
     }
     function reset() {
-      formulaSet = getAFormula(settings.rangeMin, settings.rangeMax, settings.numOfDig, settings.mustCarry);
+      formulaSet =
+        toFormulaStr(
+          getAFormula(settings.rangeMin, settings.rangeMax, settings.numOfDig, settings.mustCarry)
+        )
       document.getElementById('formula').innerHTML = formulaSet.formula;
     }
     function verify() {
